@@ -13,6 +13,7 @@ import java.util.List;
 public class StudentsApi {
 
     @GetMapping("/all")
+    @PreAuthorize("hasRole('ADMISSIONS')")
     public List<Student> getAll() {
         List<Student> students = new ArrayList<>();
         students.add(new Student(1, "John Doe"));

@@ -1,5 +1,6 @@
 package zw.nseremwe.Api;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,6 +13,7 @@ import java.util.List;
 public class PaymentsApi {
 
     @GetMapping("/all")
+    @PreAuthorize("hasRole('ACCOUNTS')")
     public List<Payment> getAllPayments() {
         List<Payment> payments = new ArrayList<>();
         payments.add(new Payment(101, "John Doe", 50.0));
